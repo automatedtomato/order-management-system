@@ -30,7 +30,7 @@ func (c *posServiceServer) CreateOrder(ctx context.Context, req *pos.CreateOrder
 
 func main() {
 	// 8080ポートでリスンするTCPソケットを作成
-	lis, err := net.Listen("tcp", "8080")
+	lis, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

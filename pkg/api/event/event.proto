@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package event;
+
+option go_package = "github.com/automatedtomato/order-management-system/pkg/api/event";
+
+// OrderCreateEvent message
+message OrderCreateEvent {
+    string order_id = 1;
+    string pos_id = 2;
+    repeated OrderItem items = 3;
+}
+
+// OrderItem message (reused from pos.proto)
+message OrderItem {
+    string product_is = 1;
+    int32 quantity = 2;
+}
+
+// KitchenInstructionEvent message
+message KitchenInstructionEvent {
+    string order_id = 1;
+    repeated OrderItem items = 2;
+}
