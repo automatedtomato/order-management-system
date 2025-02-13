@@ -1,0 +1,34 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Compiled Object Files and Archives
+*.o
+*.a
+
+# Executables
+pos
+order
+kitchen
+payment
+*.exe
+
+# Go Build Cache
+/pkg/mod/
+/bin/
+/vendor/
+
+# VSCode files
+.vscode/
+
+# Temporary files and directories
+tmp/
+temp/
+*.tmp
+
+# Log files
+*.log
+
+# Docker related
+docker-compose.override.yml

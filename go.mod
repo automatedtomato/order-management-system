@@ -1,4 +1,4 @@
-module github.com/automatedtomato/order-management-system/pkg
+module github.com/automatedtomato/order-management-system
 
 go 1.23.5
 

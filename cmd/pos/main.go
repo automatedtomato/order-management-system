@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-// posServiceServerはPOSServiceServerインターフェースを実装するサーバ。
+// posServiceServerはPOSServiceServerインターフェースを実装するサーバ
 type posServiceServer struct {
 	pos.UnimplementedPOSServiceServer // 互換性維持のため埋め込む
 }
