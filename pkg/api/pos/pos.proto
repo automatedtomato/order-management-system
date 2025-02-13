@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package pos;
+
+option go_package = "github.com/automatedtomato/order-management-system/pkg/api/pos";
+
+// POS Service Definition
+service POSService {
+    // CreateOrder RPC method
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
+}
+
+// CreateOrderRequest message
+message CreateOrderRequest {
+    string pos_id = 1;
+    repeated OrderItem items = 2;
+}
+
+// CreateOrderResponse message
+message CreateOrderResponse {
+    string order_id = 1;
+    string status = 2;
+}
+
+// OrderItem message
+message OrderItem {
+    string product_is = 1;
+    int32 quantity = 2;
+}

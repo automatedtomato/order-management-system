@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  consul:
+    image: hashicorp/consul:1.20
+    ports:
+      - "8500:8500" # HTTP API
+      - "8600:8600/udp" # DNS
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    ports:
+      - "5672:5672" # AMQP protocol
+      - "15672:15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:7.0
+    ports:
+      - "27017:27017" # MongoDB port
+    volumes:
+      - mongodb_data:/data/db # データ永続化用 Volume
+    networks:
+      - app-network
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686" # Jaeger UI
+      - "14250:14250" # gRPC Collector
+      - "14268:14268" # HTTP Collector
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true" # OTLP Collector 有効化
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_data: # MongoDB データ永続化用 Volume 定義
